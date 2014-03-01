@@ -6,29 +6,32 @@ class model:
 
     def A(self, v):
         ''' Interpolate an A(v) value based on reference. '''
-        V = self.V
-        for i in range(len(V)):
-            r = V[i]
-            if r >= v:
-                v1 = self.V[i-1]; v2 = r
-                alpha = (v - v1) / (v2 - v1)
+        from numpy import interp
+        return interp(v, self.V, self.Av)
+        # for i in range(len(V)):
+        #     r = V[i]
+        #     if r >= v:
+        #         v1 = self.V[i-1]; v2 = r
+        #         alpha = (v - v1) / (v2 - v1)
 
-                return self.Av[i-1] + alpha*self.Av[i]
+        #         return self.Av[i-1] + alpha*self.Av[i]
 
-        return 0.
+        #return 0.
 
     def M(self, v):
         ''' Interpolate an M(v) value based on reference. '''
-        V = self.V
-        for i in range(len(V)):
-            r = V[i]
-            if r >= v:
-                v1 = self.V[i-1]; v2 = r
-                alpha = (v - v1) / (v2 - v1)
+        from numpy import interp
+        return interp(v, self.V, self.Mv)
+        # V = self.V
+        # for i in range(len(V)):
+        #     r = V[i]
+        #     if r >= v:
+        #         v1 = self.V[i-1]; v2 = r
+        #         alpha = (v - v1) / (v2 - v1)
 
-                return self.Mv[i-1] + alpha*self.Mv[i]
+        #         return self.Mv[i-1] + alpha*self.Mv[i]
 
-        return 0.
+        # return 0.
 
 import model_data as md
 G1 = model(md.G1[:,0], md.G1[:,1], md.G1[:,2])

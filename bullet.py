@@ -12,7 +12,7 @@ class bullet:
         from constants import convert
 
         self.name = name
-        self.mass = mass#convert(mass, f='grains', t='pounds'); print self.mass
+        self.mass = convert(mass, f='grains', t='pounds'); print self.mass
         self.bc = bc
         self.m = model
 
@@ -29,7 +29,7 @@ class bullet:
         m = self.m
 
         v = abs(linalg.norm(array([x[2], x[3]])))
-        ax = -x[2]*(m.A(v)/self.bc)*v**(m.M(v)-1)#/self.mass
+        ax = -x[2]*(m.A(v)/self.bc)*v**(m.M(v)-1)/self.mass
         ay = -g - (x[3]*(m.A(v)/self.bc)*v**(m.M(v)-1))/self.mass
 
         return array([x[2], x[3], ax, ay])
