@@ -18,11 +18,11 @@ def main():
 
     #~ Bullet-specific Variables
     name = '50 ATV BT'
-    b = bullet(name, mass=.5, bc=0.942, model=G1)
+    b = bullet(name, mass=50., bc=0.942, model=G1)
     #~/ Bullet-Specific Variables
 
     #~ Integrate
-    y0 = [50., 0., 3300., 0.]
+    y0 = [0., 0., 3300., 0.]
     states = odeint(b.shoot, y0, times)
     states = array(states)
     #/~ Integrate
@@ -36,7 +36,7 @@ def main():
     #~ Plot
     fig, ax = subplots()
 
-    r_mark, = ax.plot(x, y, 'ro', alpha=.8)
+    r_mark, = ax.plot(x, y, 'ro-', alpha=.8)
     b_mark, = ax.plot(states[:,0], states[:,1]*12., 'b-', lw=3, alpha=.8)
 
     legend( [r_mark, b_mark],

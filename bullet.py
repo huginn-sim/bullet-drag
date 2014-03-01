@@ -12,7 +12,7 @@ class bullet:
         from constants import convert
 
         self.name = name
-        self.mass = convert(mass, f='grains', t='pounds')
+        self.mass = mass#convert(mass, f='grains', t='pounds'); print self.mass
         self.bc = bc
         self.m = model
 
@@ -29,8 +29,8 @@ class bullet:
         m = self.m
 
         v = abs(linalg.norm(array([x[2], x[3]])))
-        ax = -x[2]*(m.A(v)/self.bc)*v**(m.M(v)-1)
-        ay = -g - x[3]*(m.A(v)/self.bc)*v**(m.M(v)-1)
+        ax = -x[2]*(m.A(v)/self.bc)*v**(m.M(v)-1)#/self.mass
+        ay = -g - (x[3]*(m.A(v)/self.bc)*v**(m.M(v)-1))/self.mass
 
         return array([x[2], x[3], ax, ay])
 
@@ -48,11 +48,11 @@ if __name__ == "__main__":
 
     #~ Bullet-specific Variables
     name = '50 ATV BT'
-    b = bullet(name, mass=.5, bc=0.942, model=G1)
+    b = bullet(name, mass=50., bc=0.942, model=G1)
     #~/ Bullet-Specific Variables
 
     #~ Integrate
-    y0 = [50., 0., 3300., 0.]
+    y0 = [0., 0., 3300., 0.]
     states = odeint(b.shoot, y0, times)
     states = array(states)
     #/~ Integrate
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     #~ Plot
     fig, ax = subplots()
 
-    r_mark, = ax.plot(x, y, 'ro', alpha=.8)
+    r_mark, = ax.plot(x, y, 'ro-', alpha=.8)
     b_mark, = ax.plot(states[:,0], states[:,1]*12., 'b-', lw=3, alpha=.8)
 
     legend( [r_mark, b_mark],
