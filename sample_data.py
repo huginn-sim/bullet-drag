@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+.. module:: sample_data
+
+.. moduleauthor:: Huginn
+"""
+
 from numpy import array
 
 samples = {}

@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+.. module:: model
+
+.. moduleauthor:: Huginn
+"""
+
 class model:
     def __init__(self, V, Av, Mv):
         self.V = V

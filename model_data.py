@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+.. module:: model_data
+
+.. moduleauthor:: Huginn
+"""
+
 from numpy import array
 
 G1 = array([    [ 4230 , 1.477404177730177e-04 , 1.9565 ],

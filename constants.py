@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+.. module:: constants
+
+.. moduleauthor:: Huginn
+"""
+
 g = 32
 
 grains_to_pounds = 1./7000.
