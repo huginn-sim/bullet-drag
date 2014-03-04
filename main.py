@@ -79,7 +79,7 @@ def main():
             numpoints=1)
 
     configure(  ax=ax,
-                title=r'G1 Model of Remington .233 cartridge'+'\n'+r'$\theta='+str(round(theta,6))+r'$ radians',
+                title=r'G1 Model of Remington .233 cartridge'+'\n'+r'$\theta\approx'+str(round(theta,6))+r'$ radians',
                 xlabel=r'Horizontal Displacement (yards)',
                 ylabel=r'Height (inches)',
                 xbounds=None, ybounds=None)
